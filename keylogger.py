@@ -48,7 +48,6 @@ else:
 
             self.interval = interval
             self.report_method = report_method
-# hello
             self.log = ""
 
             self.start_dt = datetime.now()
